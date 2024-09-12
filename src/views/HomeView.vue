@@ -1,25 +1,27 @@
 <template>
-  <main>
-    <div class="products">
-      <div class="product" v-for="product in productsStore.products">
-        <h1>{{ product.title }}</h1>
-      </div>
-    </div>
-  </main>
+    <main>
+        <!-- TODO: Добавь отдельную панель для сортировки -->
+        <div class="products">
+            <ProductList :products="productsStore?.products" />
+        </div>
+    </main>
 </template>
 <script>
 import { mapStores } from "pinia";
 import { useProductsStore } from "@/stores/products";
+import ProductList from "@/components/product/ProductList.vue";
 
 export default {
-  computed: {
-    ...mapStores(useProductsStore),
-  },
-  methods: {},
-
-  async mounted() {
-    await this.productsStore.fetchAllProduct();
-    console.log("hh");
-  },
+    name: "HomePage",
+    components: {
+        ProductList,
+    },
+    computed: {
+        ...mapStores(useProductsStore),
+    },
+    methods: {},
+    async mounted() {
+        await this.productsStore.fetchAllProduct();
+    },
 };
 </script>

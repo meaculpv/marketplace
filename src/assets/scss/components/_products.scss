@@ -1,0 +1,24 @@
+/* TODO: Напиши стили для продуктов */
+.product {
+    display: subgrid;
+
+    &__header {
+    }
+
+    &__image {
+    }
+
+    &__img {
+        width: 30rem;
+        height: 30rem;
+        object-fit: contain;
+    }
+
+    &__body {
+    }
+
+    &__description {
+        font-size: 1.4rem;
+        line-height: 1.2lh;
+    }
+}
