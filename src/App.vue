@@ -13,6 +13,7 @@ export default {
 
 <template>
   <Header />
+  <h1>GITHUB</h1>
   <RouterView />
   <Footer />
 </template>
