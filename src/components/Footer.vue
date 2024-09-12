@@ -1,3 +1,7 @@
 <template><h1>Footer</h1></template>
-<script></script>
+<script>
+export default {
+    name: "Footer",
+};
+</script>
 <style lang="scss" scoped></style>
