@@ -4,6 +4,7 @@
     <nav class="nav">
       <ul class="nav__list">
         <li class="nav__item">
+          <p class="nav__link" @click="setSortingMethod('none')">Reset</p>
           <p class="nav__link" @click="setSortingMethod('clothes')">Clothes</p>
           <p class="nav__link" @click="setSortingMethod('jewelery')">Jewelry</p>
           <p class="nav__link" @click="setSortingMethod('technic')">Technic</p>
@@ -74,6 +75,14 @@ export default {
     },
     setSortingMethod(payload) {
       this.productsStore.sortingMethod = payload;
+
+      this.$router.push({
+        path: this.$route.path,
+        query: {
+          ...this.$route.query,
+          sort: payload,
+        },
+      });
     },
     updateQuantity(productId, event) {
       const newQuantity = parseInt(event.target.value);
