@@ -2,39 +2,33 @@
   <div class="product">
     <div class="product__header">
       <div class="product__image">
-        <img :src="product.image" :alt="product.title" class="product__img" />
+        <img :src="product?.image" :alt="product?.title" class="product__img" />
       </div>
     </div>
     <div class="product__body">
-      <h2 class="heading__secondary">{{ product.title }}</h2>
-      <p class="product__description">{{ product.description }}</p>
+      <h2 class="heading__secondary">{{ product?.title }}</h2>
+      <p class="product__description">{{ product?.description }}</p>
     </div>
     <div class="product__footer">
-      <div class="stars">
-        <a href="#"><i data-v-38237799="" class="ri-star-fill"></i></a>
-        <a href="#"><i data-v-38237799="" class="ri-star-fill"></i></a>
-        <a href="#"><i data-v-38237799="" class="ri-star-fill"></i></a>
-        <a href="#"><i data-v-38237799="" class="ri-star-fill"></i></a>
-        <a href="#"><i data-v-38237799="" class="ri-star-fill"></i></a>
-        <a href="#">4.5/5</a>
-      </div>
+      <div class="stars"></div>
       <div class="row-in">
         <div class="row-left">
-          <a href="#"
-            >Add to cart<i
-              data-v-38237799=""
-              class="ri-shopping-cart-2-line"
-            ></i
-          ></a>
+          <p @click="addToCart" class="addcart">
+            Add to cart<i class="ri-shopping-cart-2-line"></i>
+          </p>
         </div>
         <div class="sale">
-          <p>$150.00</p>
+          <p>{{ product.price }}</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import StarRating from "vue-star-rating";
+import { mapStores } from "pinia";
+import { useCartStore } from "@/stores/cart";
+
 export default {
   name: "ProductItem",
   props: {
@@ -43,9 +37,21 @@ export default {
       type: Object,
     },
   },
-  data() {
-    return {};
+  components: {
+    StarRating,
+  },
+  computed: {
+    ...mapStores(useCartStore),
+  },
+  methods: {
+    addToCart() {
+      this.cartStore.addToCart(this.product);
+
+      this.cartStore.setShowCart(true);
+    },
+    remove() {
+      this.cartStore.removeFromCart(this.product.id);
+    },
   },
 };
 </script>
-<style lang="scss" scoped></style>
