@@ -10,7 +10,13 @@
       <p class="product__description">{{ product?.description }}</p>
     </div>
     <div class="product__footer">
-      <div class="stars"></div>
+      <div class="stars">
+        <i class="ri-star-line"></i>
+        <i class="ri-star-line"></i>
+        <i class="ri-star-line"></i>
+        <i class="ri-star-line"></i>
+        <i class="ri-star-line"></i>
+      </div>
       <div class="row-in">
         <div class="row-left">
           <p @click="addToCart" class="addcart">
@@ -54,4 +60,14 @@ export default {
     },
   },
 };
+const stars = document.querySelectorAll(".star");
+stars.forEach((star, index) => {
+  star.addEventListener("click", () => {
+    stars.forEach((star, index2) => {
+      index >= index2
+        ? star.classList.add("active")
+        : star.classList.remove("active");
+    });
+  });
+});
 </script>

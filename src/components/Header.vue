@@ -7,7 +7,9 @@
           <p class="nav__link" @click="setSortingMethod('none')">Reset</p>
           <p class="nav__link" @click="setSortingMethod('clothes')">Clothes</p>
           <p class="nav__link" @click="setSortingMethod('jewelery')">Jewelry</p>
-          <p class="nav__link" @click="setSortingMethod('technic')">Technic</p>
+          <p class="nav__link" @click="setSortingMethod('technic')">
+            Electronic
+          </p>
         </li>
       </ul>
     </nav>
@@ -17,6 +19,7 @@
       ></a>
       <a href="#"><i class="ri-user-3-line"></i></a>
     </div>
+
     <div class="cart" v-if="cartStore.showCart">
       <h2 class="cart-title">Your cart</h2>
       <div class="cart-content">
